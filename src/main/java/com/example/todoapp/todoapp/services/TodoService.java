@@ -10,24 +10,24 @@ import java.util.List;
 public class TodoService {
     private TodoRepository todoRepository;
 
-    public List<Todo> findAll(){
+    public List<Todo> findAll() {
         return todoRepository.findAll();
     }
 
-    public Todo findById(Long id){
+    public Todo findById(Long id) {
         return todoRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid id!"));
     }
 
-    public Todo save(Todo todo){
+    public Todo save(Todo todo) {
         return todoRepository.save(todo);
     }
 
-    public void delete (Todo todo){
+    public void delete(Todo todo) {
         todoRepository.delete(todo);
     }
 
-    public List<Todo> finished (boolean finished){
+    public List<Todo> finished(boolean finished) {
         return todoRepository.findByFinished(finished);
     }
 }
