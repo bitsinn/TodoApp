@@ -14,7 +14,7 @@ public class TodoController {
     @Autowired
     private TodoService todoService;
 
-    @GetMapping("/")
+    @GetMapping("/todos")
     public String listTodos(Model model) {
         List<Todo> todos = todoService.findAll();
         model.addAttribute("todos", todos);
@@ -31,7 +31,7 @@ public class TodoController {
     public String addTodo(@ModelAttribute Todo todo, Model model) {
         todoService.save(todo);
         model.addAttribute("todo", todoService.findAll());
-        return "redirect:/";
+        return "redirect:/todos";
     }
 
     @GetMapping("/todos/edit/{id}")
@@ -43,13 +43,13 @@ public class TodoController {
     @PostMapping("/todos/edit/{id}")
     public String editTodo(@PathVariable Long id, @ModelAttribute Todo todo) {
         todoService.save(todo);
-        return "redirect:/";
+        return "redirect:/todos";
     }
 
     @GetMapping("/todos/delete/{id}")
     public String deleteTodo(@PathVariable Long id, @ModelAttribute Todo todo, Model model) {
         todoService.delete(todo);
         model.addAttribute("todos", todo);
-        return "redirect:/";
+        return "redirect:/todos";
     }
 }

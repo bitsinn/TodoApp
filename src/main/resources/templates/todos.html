@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" th:href="style.css">
 <head>
     <meta charset="UTF-8">
     <title>Todo list</title>
 </head>
 <body>
-<h1>TODO LIST</h1>
-<div>
-    <a th:href="@{/todos/add}">Add todo</a>
+<div class="header">
+    <h1>TODO LIST</h1>
 </div>
-<div>
+<nav class="topnav">
+    <ul>
+        <a th:href="@{/todos/add}">Add todo</a>
+    </ul>
+</nav>
+<div class="todo">
     <ul>
         <li th:each="todo : ${todos}">
             <span th:text="${todo.title}">Title</span>
             <a th:href="@{/todos/edit/{id} (id = ${todo.id})}">Edit</a>
             <a th:href="@{/todos/delete/{id} (id = ${todo.id})}">Delete</a>
-            <a th:href="@{/todos/{id} (id = ${todo.id})}">Details</a>
         </li>
     </ul>
 
